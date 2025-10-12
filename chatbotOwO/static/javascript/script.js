@@ -1,6 +1,24 @@
+const cambio_theme = document.getElementById('modo_theme');
+const root = document.documentElement;
+
+function new_chat(){
+    location.reload();
+}
+
+// cambio theme
+modo_theme.addEventListener('click', () => {
+    if (root.classList.contains('dark-mode')) {
+        root.classList.remove('dark-mode');
+        modo_theme.textContent = 'Modo actual: DIA';
+    } else {
+        root.classList.add('dark-mode');
+        modo_theme.textContent = 'Modo actual: NOCHE';
+    }
+});
+
 document.addEventListener('DOMContentLoaded', (event) => {
     // Escucha la tecla 'Enter' en el campo de entrada
-    document.getElementById('input').addEventListener('keypress', function(e) {
+    document.getElementById('input').addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
             enviar();
         }
@@ -25,17 +43,17 @@ function enviar() {
             'Content-Type': 'application/json'
         },
         // Nota: Corregí el error tipográfico 'mensjase' a 'mensaje'
-        body: JSON.stringify({ mensaje: userMessage }) 
+        body: JSON.stringify({ mensaje: userMessage })
     })
-    .then(response => response.json())
-    .then(data => {
-        // 3. Mostrar la respuesta del bot
-        displayMessage(data.respuesta, 'bot-message');
-    })
-    .catch(error => {
-        console.error('Error al enviar el mensaje:', error);
-        displayMessage("Error: No se pudo conectar con el servidor.", 'bot-message');
-    });
+        .then(response => response.json())
+        .then(data => {
+            // 3. Mostrar la respuesta del bot
+            displayMessage(data.respuesta, 'bot-message');
+        })
+        .catch(error => {
+            console.error('Error al enviar el mensaje:', error);
+            displayMessage("Error: No se pudo conectar con el servidor.", 'bot-message');
+        });
 
     // 4. Limpiar el campo de entrada
     inputField.value = '';
@@ -46,9 +64,9 @@ function displayMessage(message, className) {
     const messageElement = document.createElement('div');
     messageElement.classList.add('message', className);
     messageElement.textContent = message;
-    
+
     messagesDiv.appendChild(messageElement);
-    
+
     // Hacer scroll al final para ver el último mensaje
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }

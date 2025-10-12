@@ -1,18 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>Chatbot Flask</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='img/flask_logo.png') }}">
+    <title>Chatbot OwO</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
+
 <body>
-    <div id="chatbox">
-        <h2>Chatbot Flask</h2>
-        <div id="messages"></div>
-        <input id="input" type="text" placeholder="Escribe algo..." />
-        <button onclick="enviar()">Enviar</button>
+
+    <div class="contain">
+        <div id="chatbox">
+
+            <div class="chatheader">
+                <img src="{{ url_for('static', filename='img/flask_logo.png')}}" width="64px" height="auto" />
+                <h2>Chatbot OwO</h2>
+            </div>
+
+            <div id="messages"></div>
+            <input id="input" type="text" placeholder="Escribe algo..." />
+            <button onclick="enviar()">Enviar</button>
+
+            <div class="herramienta">
+                <button id="modo_theme">Modo actual: DIA</button>
+                <button onclick="new_chat()">Nuevo chat</button>
+            </div>
+        </div>
     </div>
 
     <script src="{{ url_for('static', filename='javascript/script.js') }}"></script>
 </body>
+
 </html>
