@@ -29,10 +29,11 @@ python -m venv nombre_de_carpeta_entorno_virtual
 source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate  # Windows
 
-# Luego, crea el descarga la libreria que tiene en requirements.txt tras de activar el entorno virtual, ojo debe estar ubicado en el mismo de raiz de carpeta para descargar bien la librería
+# Luego, crea el descarga la libreria que tiene en requirements.txt tras de activar el entorno virtual, 
+# OJO debe estar ubicado en el mismo de raiz de carpeta para descargar bien la librería
 pip install -r requirements.txt 
 # Luego, ¡happy ejecutar los programas!
 ```
   
 ### ¡Frase Animo!  
-###### 💫 La programación no es solo código, es el arte de dar vida a ideas abstractas. ¡Que tus algoritmos siempre converjan hacia soluciones elegantes!
+#### 💫 La programación no es solo código, es el arte de dar vida a ideas abstractas. ¡Que tus algoritmos siempre converjan hacia soluciones elegantes!
