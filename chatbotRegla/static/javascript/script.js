@@ -1,3 +1,21 @@
+const cambio_theme = document.getElementById('modo_theme');
+const root = document.documentElement;
+
+function new_chat(){
+    location.reload();
+}
+
+// cambio theme
+modo_theme.addEventListener('click', () => {
+    if (root.classList.contains('dark-mode')) {
+        root.classList.remove('dark-mode');
+        modo_theme.textContent = 'Modo actual: DIA';
+    } else {
+        root.classList.add('dark-mode');
+        modo_theme.textContent = 'Modo actual: NOCHE';
+    }
+});
+
 document.addEventListener('DOMContentLoaded', (event) => {
     // Escucha la tecla 'Enter' en el campo de entrada
     document.getElementById('input').addEventListener('keypress', function(e) {

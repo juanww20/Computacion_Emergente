@@ -1,19 +1,59 @@
+:root {
+    --bg-color: #eeeeee; 
+    --text-color: #2D3748;
+    --btn-card: #2563EB;
+    --card-bg: #FFFFFF; 
+    --btn-text: #FFFFFF;
+    --border-color: #E2E8F0; 
+    --input-text:black;
+}
+
+:root.dark-mode {
+    --bg-color: #111827; 
+    --text-color: #F3F4F6; 
+    --btn-card: #3B82F6; 
+    --card-bg: #4b5e7a; 
+    --btn-text: #FFFFFF;
+    --border-color: #374151;
+    --input-text:white;
+}
+
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
     margin: 0;
-    background-color: #f4f4f9;
+    background-color: var(--bg-color);
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.contain{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
 }
 
 #chatbox {
-    width: 400px;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 60%;
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
     padding: 20px;
+    margin: auto;
+    margin-top: 35px;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.chatheader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--btn-card);
+    color: var(--btn-text);
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    margin-bottom: 1rem;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 #messages {
@@ -43,17 +83,29 @@ body {
 input[type="text"] {
     width: calc(100% - 70px);
     padding: 10px;
-    border: 1px solid #ccc;
+    border: none;
     border-radius: 4px;
     box-sizing: border-box;
+    background-color: var(--bg-color);
+    color: var(--input-text);
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.herramienta{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 2em;
 }
 
 button {
-    width: 60px;
-    padding: 10px;
-    background-color: #5cb85c;
-    color: white;
+    padding: 0.5rem 0.8rem;
+    text-align: center;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    background-color: var(--btn-card);
+    color: var(--btn-text);
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
