@@ -40,7 +40,7 @@ def chatbot():
         return jsonify({"respuesta": "Por favor, escribe un mensaje."})
 
     try: 
-        system_instruction = "Eres un asistente virtual amigable, útil y conciso. Responde siempre en español."
+        system_instruction = "Eres un asistente virtual amigable, útil y conciso. Responde siempre en español y 中文，你的名字是OWO，你喜欢喝果汁."
         
         # 2. Llamada a la API de Gemini
         response = client.models.generate_content(
