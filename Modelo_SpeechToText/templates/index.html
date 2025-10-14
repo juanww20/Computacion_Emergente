@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASR con Keras y Flask</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; background-color: #f4f7f6; color: #333; max-width: 800px; margin: 20px auto; padding: 20px; }
+        .container { background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        h1, h2 { color: #0056b3; }
+        h1 { text-align: center; }
+        .feature-box { margin-top: 30px; padding-top: 20px; border-top: 1px solid #e0e0e0; }
+        button { background-color: #007bff; color: white; border: none; padding: 12px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.2s; }
+        button:hover { background-color: #0056b3; }
+        button:disabled { background-color: #cccccc; cursor: not-allowed; }
+        input[type="file"] { border: 1px solid #ccc; padding: 10px; border-radius: 5px; }
+        .result-box { margin-top: 20px; padding: 15px; background-color: #e9ecef; border-left: 5px solid #007bff; border-radius: 5px; font-family: "Courier New", Courier, monospace; min-height: 25px; }
+        .status { font-style: italic; color: #555; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎙️ Probador de Modelo de Reconocimiento de Voz</h1>
+        <p>Usa tu modelo de Keras para transcribir audio en inglés. Puedes subir un archivo o grabar tu voz directamente.</p>
+        
+        <div class="feature-box">
+            <h2>1. Subir un archivo de audio (.wav, .mp3, etc.)</h2>
+            <input type="file" id="audioFile" accept="audio/*">
+            <button id="uploadButton">Analizar Archivo</button>
+            <p class="status" id="fileStatus"></p>
+            <h3>Transcripción:</h3>
+            <div class="result-box" id="fileResult"></div>
+        </div>
+        
+        <div class="feature-box">
+            <h2>2. Grabar audio desde el micrófono</h2>
+            <button id="startButton">▶️ Iniciar Grabación</button>
+            <button id="stopButton" disabled>⏹️ Detener y Analizar</button>
+            <p class="status" id="liveStatus">Estado: Inactivo</p>
+            <h3>Transcripción:</h3>
+            <div class="result-box" id="liveResult"></div>
+        </div>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
