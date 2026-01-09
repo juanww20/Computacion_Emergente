@@ -1,7 +1,6 @@
 import random
 import copy
 
-# Sudoku base a resolver (0 representa celdas vacías)
 SUDOKU_BASE = [
     [5, 3, 0, 0, 7, 0, 0, 0, 0],
     [6, 0, 0, 1, 9, 5, 0, 0, 0],
@@ -18,13 +17,14 @@ SUDOKU_BASE = [
 FIJAS = [(i, j) for i in range(9) for j in range(9) if SUDOKU_BASE[i][j] != 0]
 
 class SudokuSolver:
-    def __init__(self):
+    def __init__(self, poblacion_size=200, max_generaciones=1000, 
+                 elitismo_count=10, mutation_rate=0.2, intentos_busqueda=30):
         self.historial_fitness = []
-        self.poblacion_size = 200
-        self.max_generaciones = 1000
-        self.elitismo_count = 10
-        self.mutation_rate = 0.2
-        self.intentos_busqueda = 30
+        self.poblacion_size = poblacion_size
+        self.max_generaciones = max_generaciones
+        self.elitismo_count = elitismo_count
+        self.mutation_rate = mutation_rate
+        self.intentos_busqueda = intentos_busqueda
         
     def crear_individuo(self):
         """Crea una solución candidata respetando números fijos"""
@@ -152,7 +152,7 @@ print("Resolviendo Sudoku con Algoritmos Genéticos Híbridos")
 print("="*50)
 
 # Crear solver y ejecutar
-solver = SudokuSolver()
+solver = SudokuSolver() # Usar parámetros por defecto
 solucion = solver.resolver()
 
 # Mostrar resultados
