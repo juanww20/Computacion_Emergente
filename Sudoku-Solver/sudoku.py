@@ -167,6 +167,7 @@ solver.mostrar_sudoku(SUDOKU_BASE)
 print("\nSOLUCIÓN ENCONTRADA:")
 solver.mostrar_sudoku(solucion)
 
+# Determinar si la solución es perfecta o aproximada
 fitness_final = solver.fitness(solucion)
 if fitness_final == 0:
     print(f"Fitness final: {fitness_final} (SOLUCIÓN PERFECTA)")
