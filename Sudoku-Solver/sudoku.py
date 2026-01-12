@@ -173,3 +173,5 @@ if fitness_final == 0:
     print(f"Fitness final: {fitness_final} (SOLUCIÓN PERFECTA)")
 else:
     print(f"Fitness final: {fitness_final} (SOLUCIÓN APROXIMADA)")
+
+# AURA CHAMO COMMIT PORSIA PERO AJA
