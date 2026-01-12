@@ -26,8 +26,9 @@ class SudokuSolver:
         self.mutation_rate = mutation_rate
         self.intentos_busqueda = intentos_busqueda
         
+    # Crea una solución candidata respetando números fijos
     def crear_individuo(self):
-        """Crea una solución candidata respetando números fijos"""
+        
         individuo = copy.deepcopy(SUDOKU_BASE)
         for i in range(9):
             disponibles = [n for n in range(1, 10) 
@@ -39,36 +40,39 @@ class SudokuSolver:
                     individuo[i][j] = disponibles.pop()
         return individuo
 
+    # Calcula la calidad de una solución (0 = perfecta)
     def fitness(self, individuo):
-        """Calcula la calidad de una solución (0 = perfecta)"""
+        
         errores = 0
         # Verificar filas y columnas
         for i in range(9):
             fila = individuo[i]
             columna = [individuo[j][i] for j in range(9)]
             errores += 18 - len(set(fila)) - len(set(columna))
+
         # Verificar bloques 3x3
         for i in range(0, 9, 3):
             for j in range(0, 9, 3):
                 bloque = [individuo[x][y] for x in range(i, i+3) 
                          for y in range(j, j+3)]
                 errores += 9 - len(set(bloque))
+
         return errores
 
+    # Selección por torneo de 3 individuos
     def seleccion(self, poblacion):
-        """Selección por torneo de 3 individuos"""
         torneo = random.sample(poblacion, 3)
         return min(torneo, key=self.fitness)
 
+    # Cruce de un punto (intercambia una fila completa)
     def cruzar(self, p1, p2):
-        """Cruce de un punto (intercambia una fila completa)"""
         hijo = copy.deepcopy(p1)
         punto = random.randint(0, 8)
         hijo[punto] = p2[punto][:]
         return hijo
 
+    # Mutación por intercambio de dos celdas no fijas en una fila
     def mutar(self, individuo):
-        """Intercambia dos celdas no fijas en una fila"""
         if random.random() < self.mutation_rate:
             fila = random.randint(0, 8)
             celdas = [j for j in range(9) if (fila, j) not in FIJAS]
@@ -76,8 +80,8 @@ class SudokuSolver:
                 a, b = random.sample(celdas, 2)
                 individuo[fila][a], individuo[fila][b] = individuo[fila][b], individuo[fila][a]
 
+    # Optimización local mediante intercambios aleatorios
     def busqueda_local(self, individuo):
-        """Optimización local con intercambios aleatorios"""
         mejor = copy.deepcopy(individuo)
         mejor_fitness = self.fitness(mejor)
         
@@ -93,8 +97,8 @@ class SudokuSolver:
                     mejor, mejor_fitness = candidato, nuevo_fitness
         return mejor
 
+    # Algoritmo genético híbrido para resolver Sudoku
     def resolver(self):
-        """Ejecuta el algoritmo genético híbrido"""
         # Generar población inicial
         poblacion = [self.crear_individuo() for _ in range(self.poblacion_size)]
         
@@ -132,8 +136,8 @@ class SudokuSolver:
         print(f"Mejor solución aproximada (fitness: {self.fitness(poblacion[0])})")
         return poblacion[0]
 
+    # Muestra el tablero de Sudoku formateado
     def mostrar_sudoku(self, sudoku):
-        """Muestra el tablero de Sudoku formateado"""
         print("\n" + "="*31)
         for i in range(9):
             if i % 3 == 0 and i != 0:
